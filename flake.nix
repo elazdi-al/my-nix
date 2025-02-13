@@ -36,6 +36,9 @@
       nixpkgs.config.allowUnfree = true;
       homebrew = {
       	enable = true;
+	brews = [
+	"tree"
+	];
 	casks = [
 	  "raycast"
 	  "arc"
@@ -44,8 +47,7 @@
 	  "whatsapp"
 	  "telegram"
 	];
-      };
-
+};
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -60,8 +62,11 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
       
       #Mac Settings
-      system.defaults.dock.autohide = true;
-
+      #Dock
+      system.defaults.dock = {
+      autohide = true;
+      show-recents = false;
+      };
       system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
     };
   in
