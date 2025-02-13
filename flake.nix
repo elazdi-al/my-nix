@@ -34,6 +34,12 @@
 	  pkgs.git
         ];
       nixpkgs.config.allowUnfree = true;
+      homebrew = {
+      	enable = true;
+	casks = [
+	  "raycast"
+	];
+      };
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
