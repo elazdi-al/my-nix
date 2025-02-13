@@ -42,6 +42,7 @@
 	  "ghostty"
 	  "alacritty"
 	  "whatsapp"
+	  "telegram"
 	];
       };
 
