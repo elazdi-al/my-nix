@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "Macbook config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -39,6 +39,7 @@
 	casks = [
 	  "raycast"
 	  "arc"
+	  "ghostty"
 	];
       };
 
