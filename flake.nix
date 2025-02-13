@@ -41,6 +41,7 @@
 	  "arc"
 	  "ghostty"
 	  "alacritty"
+	  "whatsapp"
 	];
       };
 
