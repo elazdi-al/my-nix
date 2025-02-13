@@ -40,6 +40,7 @@
 	  "raycast"
 	  "arc"
 	  "ghostty"
+	  "alacritty"
 	];
       };
 
@@ -58,6 +59,8 @@
       
       #Mac Settings
       system.defaults.dock.autohide = true;
+
+      system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
     };
   in
   {
