@@ -24,7 +24,7 @@
   };
 
      
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, ... }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, home-manager }:
   let
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
@@ -47,7 +47,10 @@
 	  "whatsapp"
 	  "telegram"
 	];
-};
+      };
+
+      users.users.admin.home = "/Users/admin";
+
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
 
@@ -76,6 +79,12 @@
     darwinConfigurations."admins-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       modules = [ 
       configuration
+      home-manager.darwinModules.home-manager {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+#      home-manager.users.admin = import ./home.nix; #symlinked to config 
+      }
+
       #Homebrew installs
       nix-homebrew.darwinModules.nix-homebrew
         {
