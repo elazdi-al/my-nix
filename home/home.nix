@@ -16,6 +16,16 @@
   # changes in each release.
   home.stateVersion = "24.11";
 
+  
+  programs = {
+      tmux = import ./tmux.nix {inherit pkgs;};
+      alacritty = import ./alacritty.nix {inherit config pkgs meta;};
+      zsh = import ./zsh.nix {inherit config pkgs lib;};
+      git = import ./git.nix {inherit config pkgs;};
+      fzf = import ./fzf.nix {inherit pkgs;};
+  }
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-}
+
+ }

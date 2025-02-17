@@ -21,9 +21,14 @@
       url = "github:homebrew/homebrew-bundle";
       flake = false;
     };
+
+    home-manager = {
+    url = "github:nix-community/home-manager";
+    inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-     
+
   outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core, homebrew-cask, homebrew-bundle, home-manager }:
   let
     configuration = { pkgs, ... }: {
@@ -38,14 +43,25 @@
       	enable = true;
 	brews = [
 	"tree"
+	"stow"
+        "fzf"
+        "autojump"
+        "yt-dlp"
+        "lua-language-server"
+        "tmux"
+        "node"
+
+
+
 	];
 	casks = [
 	  "raycast"
 	  "arc"
 	  "ghostty"
-	  "alacritty"
 	  "whatsapp"
 	  "telegram"
+    "altserver"
+    "mactex"
 	];
       };
 
@@ -63,7 +79,10 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
-      
+
+        fonts.packages = [
+           pkgs.nerd-fonts.jetbrains-mono
+         ];
       #Mac Settings
       #Dock
       system.defaults.dock = {
@@ -77,12 +96,12 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#admins-MacBook-Pro
     darwinConfigurations."admins-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      modules = [ 
+      modules = [
       configuration
       home-manager.darwinModules.home-manager {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-#      home-manager.users.admin = import ./home.nix; #symlinked to config 
+      home-manager.users.admin = import ./home.nix; #symlinked to config
       }
 
       #Homebrew installs
