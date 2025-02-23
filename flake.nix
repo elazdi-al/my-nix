@@ -36,12 +36,16 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages =
         [ pkgs.neovim
-	  pkgs.git
+	          pkgs.git
+            pkgs.starship
+            pkgs.zathura
+            pkgs.aerospace
         ];
       nixpkgs.config.allowUnfree = true;
       homebrew = {
       	enable = true;
 	brews = [
+            "latexindent"
 	"tree"
 	"stow"
         "fzf"
@@ -50,19 +54,28 @@
         "lua-language-server"
         "tmux"
         "node"
-
-
-
+	"imagemagick"
+	"tree-sitter"
+    "rust"
+    "node"
+    "python"
+    "ripgrep"
+    "fd"
 	];
 	casks = [
 	  "raycast"
 	  "arc"
-	  "ghostty"
 	  "whatsapp"
+    "ghostty"
 	  "telegram"
     "altserver"
     "mactex"
+    "skim"
+
 	];
+
+          taps = [
+          ];
       };
 
       users.users.admin.home = "/Users/admin";
@@ -83,6 +96,8 @@
         fonts.packages = [
            pkgs.nerd-fonts.jetbrains-mono
          ];
+      #Fingerprint sudo 
+      security.pam.enableSudoTouchIdAuth = true;
       #Mac Settings
       #Dock
       system.defaults.dock = {
