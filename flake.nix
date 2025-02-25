@@ -71,6 +71,7 @@
     "altserver"
     "mactex"
     "skim"
+    "miniconda"
 
 	];
 
@@ -103,6 +104,15 @@
       system.defaults.dock = {
       autohide = true;
       show-recents = false;
+      persistent-apps = [
+
+        "/Applications/Arc.app"
+        
+        "/Applications/Ghostty.app"
+
+        "/Applications/Telegram.app"
+
+            ];
       };
       system.defaults.WindowManager.EnableStandardClickToShowDesktop = false;
     };
